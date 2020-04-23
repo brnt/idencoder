@@ -44,24 +44,24 @@ Use the functions in the top-level of the module to use the default encoder.
 Otherwise, you may create your own IdEncoder object and use its encode()
 and decode() methods.
 
-Author: Michael Fogleman
-License: MIT
+Original Author: [Michael Fogleman](http://code.activestate.com/recipes/users/4171845)  
+License: [MIT](https://opensource.org/licenses/MIT)  
 Link: http://code.activestate.com/recipes/576918/
 
 Changelog:
 
-2014-05-09 Eric Wald
+2014-05-09 Eric Wald ([@eswald](https://github.com/eswald))
 - condensed duplicate bit-scrambling logic
 - switched to a native padding function
 - removed recursion and extra division
 - removed exponentiation and enumeration
 - removed excess convenience functions
 
-2014-01-13 Brent Thomson
+2014-01-13 Brent Thomson ([@brnt](https://github.com/brnt))
 - added random_alphabet() function
 - replaced main method with a useful one
 
-2013-10-11 Brent Thomson
+2013-10-11 Brent Thomso ([@brnt](https://github.com/brnt))n
 - minor bug fixes
 - minor code cleanup
 - renamed some functions to better reflect functionality
