@@ -61,7 +61,7 @@ Changelog:
 - added random_alphabet() function
 - replaced main method with a useful one
 
-2013-10-11 Brent Thomso ([@brnt](https://github.com/brnt))n
+2013-10-11 Brent Thomson ([@brnt](https://github.com/brnt))n
 - minor bug fixes
 - minor code cleanup
 - renamed some functions to better reflect functionality
