@@ -1,6 +1,9 @@
-# Integer ID Encoder
+Integer ID Encoder
+===================
 
 Python implementation for encoding (usually sequential) integer IDs.
+
+## Algorithm details
 
 A bit-shuffling approach is used to avoid generating consecutive, predictable
 values. However, the algorithm is deterministic and will guarantee that no
@@ -8,7 +11,7 @@ collisions will occur.
 
 The encoding alphabet is fully customizable and may contain any number of
 characters. By default, digits and lower-case letters are used, with
-some removed to avoid confusion between characters like o, O and 0. The
+some characters removed to avoid confusion between characters like o, O and 0. The
 default alphabet is shuffled and has a prime number of characters to further
 improve the results of the algorithm.
 
@@ -16,6 +19,8 @@ The block size specifies how many bits will be shuffled. The lower `BLOCK_SIZE`
 bits are reversed. Any bits higher than `BLOCK_SIZE` will remain as is.
 `BLOCK_SIZE` of 0 will leave all bits unaffected and the algorithm will simply
 be converting your integer to a different base.
+
+## Common usage
 
 The intended use is that incrementing, consecutive integers will be used as
 keys to generate the encoded IDs. For example, to create a new short URL (à la
@@ -47,9 +52,30 @@ and `decode()` methods.
 ## WARNING ###
 
 If you use this library as part of a production system, **you must generate
-your own unique alphabet.** One alphabet per encoded entity type is
+your own unique alphabet(s).** One alphabet per encoded entity type is
 recommended. Best practice is to configure the alphabet(s) as environment
-variables (like credentials).
+variables (like you do with credentials, right? ;-)) or to use random alphabets
+that are re-randomized each time your application is initialized. The latter
+approach will result in different encoded values for the same ID each time your
+application is initialized, but this may be acceptable.
+
+For convenience, the library includes a `random_alphabet()` function that you
+can use to easily generate these unique alphabets. One easy way is to use the
+`-r` flag from the command line:
+
+```sh
+$ python idencoder.py -r
+Random alphabet: 6nkqyxc4eabmvswfz8d9j5rhp27gt3u
+```
+
+And you can, of course, generate random alphabets programmatically:
+
+```python
+>>> import idencoder
+>>> alpha = idencoder.random_alphabet()
+>>> print(alpha)
+'c39htkrg5e7mvfn2uwap8sbj6zqdxy4'
+```
 
 ## Provenance
 
