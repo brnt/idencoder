@@ -234,7 +234,7 @@ if __name__ == "__main__":
         "-a", "--alphabet", help="use ALPHA as the alphabet", metavar="ALPHA"
     )
     alpha_group.add_argument(
-        "-r", "--random", help="generate a random alphabet", action="store_true"
+        "-r", "--random", help="print a random alphabet", action="store_true"
     )
 
     args = parser.parse_args()
