@@ -14,8 +14,8 @@ values. However, the algorithm is deterministic and will guarantee that no
 collisions will occur.
 
 The encoding alphabet is fully customizable and may contain any number of
-characters. By default, digits and lower-case letters are used, with
-some characters removed to avoid confusion between characters like o, O and 0. The
+characters. By default, digits and lower-case letters are used, with some
+characters removed to avoid confusion between characters like o, O and 0. The
 default alphabet is shuffled and has a prime number of characters to further
 improve the results of the algorithm.
 
@@ -196,11 +196,19 @@ def random_alphabet():
 
 if __name__ == "__main__":
     import argparse
+    from operator import attrgetter
+
+    class SortingHelpFormatter(argparse.HelpFormatter):
+        def add_arguments(self, actions):
+            actions = sorted(actions, key=attrgetter('option_strings'))
+            super(SortingHelpFormatter, self).add_arguments(actions)
 
     alpha = DEFAULT_ALPHABET
     length = MIN_LENGTH
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        formatter_class=SortingHelpFormatter,
+    )
     parser.add_argument(
         "-q",
         "--quiet",
